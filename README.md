@@ -1,7 +1,7 @@
 # Hand Detection Project
 
 ## Overview
-This **reel-time hands tracker project** using MediaPipe, allows you to control your computer's control only by hands. While the right hand can be used to control your mouse, your left hand can be assigned to some key controllers thanks to a basic MLP classifier.
+This **real-time hands tracker project** using MediaPipe, allows you to control your computer's control only by hands. While the right hand can be used to control your mouse, your left hand can be assigned to some key controllers thanks to a basic MLP classifier.
 
 ## Features
 1) **Real-time classifier** with features to help you build your own MLPClassifier model with any hand-sign you would like :
