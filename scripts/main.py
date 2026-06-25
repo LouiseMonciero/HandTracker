@@ -22,21 +22,36 @@ with open('./model/scaler.pkl', 'rb') as f:
 
 
 LABELS_MAPPING = {
-    "heart_1": 0,
-    "heart_2": 1,
-    "heart_3": 2,
-    "index_lifted": 3,
-    "f*ck_sign": 4,
-    "victory_sign": 5,
-    "ok": 6,
-    "fist": 7,
-    "middle_finger_touching_thumb": 8,
-    "little_finger_up": 9,
-    "ring_finger_touching_thumb": 10,
-    "triangle": 11,
-    "thumbs_up": 12,
-    'None': None
+    "A": 0,
+    "B": 1,
+    "C": 2,
+    "D": 3,
+    "E": 4,
+    "F": 5,
+    "G": 6,
+    "H": 7,
+    "I": 8,
+    "J": 9,
+    "K": 10,
+    "L": 11,
+    "M":12,
+    "N":13,
+    "O":14,
+    "P":15,
+    "Q":16,
+    "R":17,
+    "S":18,
+    "T":19,
+    "U":20,
+    "V":21,
+    "W":22,
+    "X":23,
+    "Y":24,
+    "Z":25,
+    "Bonjour":26,
+    "à tous":27,
 }
+
 
 def one_hot_to_label(vec) -> int:
     vec = np.asarray(vec)
@@ -178,8 +193,10 @@ with mp_hands.Hands(
                     flat = [v for lm in hand_landmarks.landmark for v in (lm.x, lm.y, lm.z)]
                     flat = scaler.transform([flat])
                     y_pred = mlp.predict([flat[0]])
-
-                    text = (f"Hand sign detected : {LABELS_MAPPING_REV[one_hot_to_label(y_pred)]}\n")
+                    pred = one_hot_to_label(y_pred)
+                    text = ''
+                    if (pred is not None):
+                        text = (f"Hand sign detected : {LABELS_MAPPING_REV[one_hot_to_label(y_pred)]}\n")
 
                     box_h = draw_box(image, text, side="left", y=left_y, color=(121, 0, 121))
                     left_y -= (box_h + 10)
