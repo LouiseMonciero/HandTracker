@@ -3,3 +3,5 @@ old/
 __pycache__
 data/images
 image.png
+images
+.DS_Store
